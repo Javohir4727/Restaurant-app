@@ -7,8 +7,7 @@ import MenuImg4 from "..//media//favouriteMenu/Image (7).jpg";
 import MenuImg5 from "..//media//favouriteMenu/Image (8).jpg";
 import MenuImg6 from "..//media//favouriteMenu/Title & Desc.jpg";
 import FavoriteMenuItem from "./FavoriteMenuItem";
-
-type Props = {};
+import { title } from "process";
 
 const MenuWrapper = styled.div`
   display: grid;
@@ -61,7 +60,46 @@ const MenuWrapper = styled.div`
   }
 `;
 
-function FavouriteMenu({}: Props) {
+const favMenuItem = [
+  {
+    title: "Our Favourite Menu 1",
+    description: "Amet minim mollit non deserunt ullamco",
+    img: `${MenuImg1}`,
+    price: 13,
+  },
+  {
+    title: "Our Favourite Menu 3",
+    description: "Amet minim mollit non deserunt ullamco",
+    img: `${MenuImg2}`,
+    price: 13,
+  },
+  {
+    title: "Our Favourite Menu 2",
+    description: "Amet minim mollit non deserunt ullamco",
+    img: `${MenuImg3}`,
+    price: 13,
+  },
+  {
+    title: "Our Favourite Menu 4",
+    description: "Amet minim mollit non deserunt ullamco",
+    img: `${MenuImg4}`,
+    price: 13,
+  },
+  {
+    title: "Our Favourite Menu 5",
+    description: "Amet minim mollit non deserunt ullamco",
+    img: `${MenuImg5}`,
+    price: 13,
+  },
+  {
+    title: "Our Favourite Menu 6",
+    description: "Amet minim mollit non deserunt ullamco",
+    img: `${MenuImg6}`,
+    price: 13,
+  },
+];
+
+function FavouriteMenu() {
   return (
     <div>
       <h3
@@ -77,7 +115,16 @@ function FavouriteMenu({}: Props) {
         Our Favourite Menu
       </h3>
       <MenuWrapper>
-        <FavoriteMenuItem
+        {favMenuItem.map((val) => (
+          <FavoriteMenuItem
+            title={val.title}
+            decription={val.description}
+            price={val.price}
+            img={val.img}
+          />
+        ))}
+
+        {/* <FavoriteMenuItem
           title="Our Favourite Menu 1"
           decription="Amet minim mollit non deserunt ullamco"
           img={MenuImg1}
@@ -112,7 +159,7 @@ function FavouriteMenu({}: Props) {
           decription="Amet minim mollit non deserunt ullamco"
           img={MenuImg6}
           price={13}
-        />
+        /> */}
       </MenuWrapper>
     </div>
   );
