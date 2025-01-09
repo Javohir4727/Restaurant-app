@@ -8,6 +8,10 @@ import OurChef from "components/OurChef";
 import { ReservBtn } from "components/Button";
 import WeekendOffers from "..//..//components/WeekendOffers";
 import FavouriteMenu from "..//..//components/FavouriteMenu";
+import OurNewsletter from "components/OurNewsletter";
+import OurCustomersSay from "components/Reviews";
+import GTASection from "..//..//components/GTASection/GTASection";
+import Footer from "..//..//components/Footer/Footer";
 
 type Props = {};
 
@@ -63,6 +67,13 @@ const ReserveTable = styled.div`
   width: 100%;
   margin-top: 6rem;
 
+  .discReserveBtn{
+    background-color: rgba(248, 189, 73, 1);
+    border: 1px solid rgba(248, 189, 73, 1);
+    color: black;
+      
+    }
+  }
   .reserveImageWrapper {
     img {
       width: 400px;
@@ -83,7 +94,7 @@ const ReserveTable = styled.div`
       padding: 1rem 1rem;
       font-size: 1rem;
     }
-  }
+  
 `;
 const HomePage = (props: Props) => {
   return (
@@ -118,13 +129,19 @@ const HomePage = (props: Props) => {
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
             sint. Velit officia consequat duis enim velit mollit.
           </p>
-          <ReservBtn className="reserveContentBtn">Reservation</ReservBtn>
+          <ReservBtn className="reserveContentBtn discReserveBtn">
+            Reservation
+          </ReservBtn>
         </div>
       </ReserveTable>
       <WhyChooseUs />
       <OurChef />
       <WeekendOffers />
       <FavouriteMenu />
+      <OurNewsletter />
+      <OurCustomersSay />
+      <GTASection />
+      <Footer />
     </Container>
   );
 };
