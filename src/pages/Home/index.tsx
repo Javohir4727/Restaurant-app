@@ -12,6 +12,7 @@ import OurNewsletter from "components/OurNewsletter";
 import OurCustomersSay from "components/Reviews";
 import GTASection from "..//..//components/GTASection/GTASection";
 import Footer from "..//..//components/Footer/Footer";
+import Header from "components/Header";
 
 type Props = {};
 
@@ -99,6 +100,7 @@ const ReserveTable = styled.div`
 const HomePage = (props: Props) => {
   return (
     <Container>
+      <Header />
       <ReservationSection>
         <img
           src={BackgroundImage}

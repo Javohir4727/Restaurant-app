@@ -11,13 +11,9 @@ const FooterContentWrapper = styled.div`
 
   .elementWrapper {
     margin-top: 10px;
-    div {
-      display: flex;
-      justify-content: space-between;
 
-      img {
-        width: 80px;
-      }
+    img {
+      width: 70px;
     }
 
     .contactText {
@@ -49,6 +45,25 @@ const FooterContentWrapper = styled.div`
   .gallery {
     max-width: 380px;
     width: 100%;
+    .swiper-wrapper {
+      height: 100px;
+      background-color: transparent;
+    }
+    .swiper-wrapper img::selection {
+      background-color: transparent;
+    }
+    .slider-controls {
+      width: 100%;
+      height: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        margin-top: 30px;
+      }
+    }
   }
   .galleryHeader {
     width: 100%;

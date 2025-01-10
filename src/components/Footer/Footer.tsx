@@ -12,17 +12,23 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
 import PlaceIcon from "@mui/icons-material/Place";
+import EastIcon from "@mui/icons-material/East";
+import WestIcon from "@mui/icons-material/West";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
+import "swiper/css";
+import { Navigation, Pagination } from "swiper/modules";
+import { useNavigate } from "react-router-dom";
 import Image1 from "./img/Image (9).jpg";
 import Image2 from "./img/Image (10).jpg";
 import Image3 from "./img/Image (11).jpg";
 import Image4 from "./img/Image (12).jpg";
-import EastIcon from "@mui/icons-material/East";
-import WestIcon from "@mui/icons-material/West";
-
-import { useNavigate } from "react-router-dom";
 
 function Footer() {
   const navigate = useNavigate();
+  const navigationPrevRef = React.useRef(null);
+  const navigationNextRef = React.useRef(null);
+
   return (
     <div>
       <FootersHeaderWrapper>
@@ -32,12 +38,13 @@ function Footer() {
           </div>
           <div className="iconWrapper">
             <img src={FacebookIcon} alt="facebook" />
-            <img src={InstagrammIcon} alt="instagramm" />
+            <img src={InstagrammIcon} alt="instagram" />
             <img src={WhatsAppIcon} alt="whatsapp" />
           </div>
         </header>
       </FootersHeaderWrapper>
       <FooterContentWrapper>
+        {/* Contact Section */}
         <div className="elementWrapper contactWrapper">
           <List className="elementWrapper" sx={{ bgcolor: "background.paper" }}>
             <ListItem className="listItem">
@@ -81,6 +88,7 @@ function Footer() {
             </ListItem>
           </List>
         </div>
+
         <div className="elementWrapper">
           <List
             className="elementWrapper"
@@ -165,6 +173,8 @@ function Footer() {
             />
           </List>
         </div>
+
+        {/* Gallery Section */}
         <div className="elementWrapper gallery">
           <div className="galleryHeader">
             <ListItem className="listItem listItemHot">
@@ -174,26 +184,82 @@ function Footer() {
               </a>
             </ListItem>
           </div>
-          <div>
-            <div>
-              <img src={Image1} alt="food" />
-            </div>
-            <div>
-              <img src={Image2} alt="food" />
-            </div>
-            <div>
-              <img src={Image3} alt="food" />
-            </div>
-            <div>
-              <img src={Image4} alt="food" />
-            </div>
-          </div>
-          <div>
-            <WestIcon style={{ marginTop: "10px", cursor: "pointer" }} />
-            <EastIcon style={{ marginTop: "10px", cursor: "pointer" }} />
+          <div className="slider-container">
+            <Swiper
+              modules={[Navigation, Pagination]}
+              slidesPerView={4}
+              spaceBetween={30}
+              loop={true}
+              navigation={{
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              }}
+              pagination={{
+                clickable: true,
+                bulletClass: "none",
+              }}
+              onBeforeInit={(swiper: any) => {
+                swiper.params.navigation.prevEl = navigationPrevRef.current;
+                swiper.params.navigation.nextEl = navigationNextRef.current;
+              }}
+            >
+              <SwiperSlide>
+                <img src={Image1} alt="food" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={Image2} alt="food" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={Image3} alt="food" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={Image4} alt="food" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={Image1} alt="food" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={Image2} alt="food" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={Image3} alt="food" />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img src={Image4} alt="food" />
+              </SwiperSlide>
+
+              <div className="slider-controls">
+                <WestIcon
+                  className="swiper-button-prev"
+                  ref={navigationPrevRef}
+                  style={{
+                    color: "rgba(34, 34, 34, 1)",
+                    cursor: "pointer",
+                  }}
+                />
+                <EastIcon
+                  className="swiper-button-next"
+                  ref={navigationNextRef}
+                  style={{
+                    color: "rgba(34, 34, 34, 1)",
+                    cursor: "pointer",
+                  }}
+                />
+              </div>
+            </Swiper>
           </div>
         </div>
       </FooterContentWrapper>
+      <div
+        style={{
+          textAlign: "center",
+          fontSize: "12px",
+          color: "rgba(133, 133, 133, 1)",
+          marginTop: "20px",
+        }}
+      >
+        <p>Copyright Vagency, 2021 All Right Reserved</p>
+      </div>
     </div>
   );
 }
