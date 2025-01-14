@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "./Header";
-import Background from "./Image (9).jpg";
 import Imagebac from "./Imagebac.jpg";
 import styled from "styled-components";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
-var title = "About Us";
-
+type Props = {
+  title: string;
+};
 const Wrapper = styled.div`
   height: 70vh;
   display: flex;
@@ -15,24 +15,17 @@ const Wrapper = styled.div`
   background-image: url("${Imagebac}");
   background-position: center;
   background-size: cover;
-  position: absolute;
+  position: relative;
   top: 0;
   right: 0;
   left: 0;
   z-index: -1;
 `;
 
-const BlackBackground = () => {
+const BlackBackground = ({ title }: Props) => {
   return (
     <div style={{ position: "relative" }}>
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-        }}
-      >
+      <div>
         <p
           style={{
             color: "rgba(133, 133, 133, 1)",
@@ -82,7 +75,6 @@ const BlackBackground = () => {
           </div>
         </Wrapper>
       </div>
-      ;
     </div>
   );
 };

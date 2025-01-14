@@ -14,6 +14,7 @@ const MenuWrapper = styled.div`
   grid-template-columns: auto auto;
   justify-content: center;
   gap: 5rem;
+  margin-bottom: 170px;
 
   .menuContentWrapper {
     display: flex;
@@ -123,43 +124,6 @@ function FavouriteMenu() {
             img={val.img}
           />
         ))}
-
-        {/* <FavoriteMenuItem
-          title="Our Favourite Menu 1"
-          decription="Amet minim mollit non deserunt ullamco"
-          img={MenuImg1}
-          price={13}
-        />
-        <FavoriteMenuItem
-          title="Our Favourite Menu 4"
-          decription="Amet minim mollit non deserunt ullamco"
-          img={MenuImg2}
-          price={13}
-        />
-        <FavoriteMenuItem
-          title="Our Favourite Menu 2"
-          decription="Amet minim mollit non deserunt ullamco"
-          img={MenuImg3}
-          price={13}
-        />
-        <FavoriteMenuItem
-          title="Our Favourite Menu 5"
-          decription="Amet minim mollit non deserunt ullamco"
-          img={MenuImg4}
-          price={13}
-        />
-        <FavoriteMenuItem
-          title="Our Favourite Menu 3"
-          decription="Amet minim mollit non deserunt ullamco"
-          img={MenuImg5}
-          price={13}
-        />
-        <FavoriteMenuItem
-          title="Our Favourite Menu 6"
-          decription="Amet minim mollit non deserunt ullamco"
-          img={MenuImg6}
-          price={13}
-        /> */}
       </MenuWrapper>
     </div>
   );
