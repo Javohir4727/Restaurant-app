@@ -1,11 +1,14 @@
-import React from 'react'
+import React from "react";
+import BlackBackground from "components/BlackBackground";
 
-type Props = {}
+type Props = {};
 
 function Contact({}: Props) {
   return (
-    <div>Contact</div>
-  )
+    <div>
+      <BlackBackground title="Contact" />
+    </div>
+  );
 }
 
-export default Contact
+export default Contact;
