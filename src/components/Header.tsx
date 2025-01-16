@@ -75,14 +75,7 @@ const Header = (props: Props) => {
         >
           About Us
         </NavLink>
-        <NavLink
-          to="/pages"
-          className={({ isActive }) =>
-            isActive ? "active-link" : "inactive-link"
-          }
-        >
-          Pages
-        </NavLink>
+
         <NavLink
           to="/menu"
           className={({ isActive }) =>

@@ -16,6 +16,7 @@ const OurNewsletterItem = ({ img, title, description, link }: Props) => {
         border: "1px solid rgba(217, 217, 217, 1)",
         padding: "12px",
         borderRadius: "10px",
+        position: "relative",
       }}
     >
       <div className="cardImgWrapper">
@@ -23,7 +24,9 @@ const OurNewsletterItem = ({ img, title, description, link }: Props) => {
       </div>
       <h4>{title}</h4>
       <p>{description}</p>
-      <a href="">{link}</a>
+      <div style={{ position: "absolute", bottom: "8px" }}>
+        <a href="">{link}</a>
+      </div>
     </div>
   );
 };

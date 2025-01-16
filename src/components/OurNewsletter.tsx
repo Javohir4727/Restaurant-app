@@ -1,34 +1,14 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import OurNewsletterItem from "./OurNewsletterItem";
-import Img1 from "..//media/Image (9).jpg";
-import Img2 from "..//media/Image (10).jpg";
-import Img3 from "..//media/Image (11).jpg";
-import { hover } from "@testing-library/user-event/dist/hover";
+import { supabase } from "../utils/supabase";
 
-const newsLetterMenu = [
-  {
-    img: `${Img1}`,
-    title: "Chicken Lettuce Wraps with Lime Drench",
-    description:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint",
-    link: "Read Full Article ",
-  },
-  {
-    img: `${Img2}`,
-    title: "Chicken Lettuce Wraps with Lime Drench",
-    description:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint",
-    link: "Read Full Article ",
-  },
-  {
-    img: `${Img3}`,
-    title: "Chicken Lettuce Wraps with Lime Drench",
-    description:
-      "Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint",
-    link: "Read Full Article ",
-  },
-];
+interface newsLetterRestuarant {
+  img: string;
+  title: string;
+  description: string;
+  link: string;
+}
 
 const OurMenuWrapper = styled.div`
   display: flex;
@@ -40,8 +20,12 @@ const OurMenuWrapper = styled.div`
     text-align: center;
     max-width: 330px;
     margin: 0 auto;
+    overflow: hidden;
+
     img {
-      width: 100%;
+      max-width: 100%;
+      width: 300px;
+      height: 200px;
     }
   }
 
@@ -59,6 +43,7 @@ const OurMenuWrapper = styled.div`
     line-height: 24px;
     font-size: 14px;
     font-weight: 400;
+    margin-bottom: 30px;
   }
 
   a {
@@ -70,6 +55,23 @@ const OurMenuWrapper = styled.div`
 `;
 
 function OurNewsletter() {
+  const [getDataBase, setDataBase] = useState<newsLetterRestuarant[]>([]);
+
+  const fetchData = async () => {
+    try {
+      const { data, error } = await supabase.from("OurNewsLetter").select("*");
+
+      setDataBase(data || []);
+      if (error) {
+        throw error;
+      }
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div
       style={{
@@ -86,7 +88,7 @@ function OurNewsletter() {
         Welcome to Our Newsletter
       </h3>
       <OurMenuWrapper>
-        {newsLetterMenu.map((val, index) => (
+        {getDataBase.map((val, index) => (
           <OurNewsletterItem
             key={index}
             img={val.img}

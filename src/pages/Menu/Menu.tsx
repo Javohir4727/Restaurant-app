@@ -39,7 +39,7 @@ function Menu() {
           <MenuWrapper>
             {MENU_REVIEWS_MOCS.map((item) => (
               <MenuImgWrapper>
-                <img src={item.img} alt="" />
+                <img src={item.img} alt="food" />
 
                 <h6>
                   {item.title}

@@ -118,7 +118,7 @@ function Footer() {
             </ListItem>
 
             <ListItemText
-              onClick={() => navigate("/home")}
+              onClick={() => navigate("/")}
               primary="Home"
               slotProps={{
                 primary: {
@@ -131,7 +131,7 @@ function Footer() {
               }}
             />
             <ListItemText
-              onClick={() => navigate("/aboutus")}
+              onClick={() => navigate("/about")}
               primary="About Us"
               slotProps={{
                 primary: {
