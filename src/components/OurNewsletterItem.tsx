@@ -20,7 +20,7 @@ const OurNewsletterItem = ({ img, title, description, link }: Props) => {
       }}
     >
       <div className="cardImgWrapper">
-        <img src={img} alt="food" />
+        <img src={img} alt={title} />
       </div>
       <h4>{title}</h4>
       <p>{description}</p>
