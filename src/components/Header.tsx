@@ -18,7 +18,11 @@ const Logo = Styled.img`
   }
 `;
 
+
 const HeaderWrapper = Styled.div`
+=======
+const HeaderWrapper = styled.div`
+
   position: absolute;
   top: 0;
   left: 0;

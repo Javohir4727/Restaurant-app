@@ -66,6 +66,7 @@ const MenuWrapper = styled.div`
 `;
 
 function FavouriteMenu() {
+
   const [getDataBase, setDataBase] = useState<favouriteMenuRestaurnat[]>([]);
   const fetchData = async () => {
     try {
@@ -109,6 +110,32 @@ function FavouriteMenu() {
           ))}
         </MenuWrapper>
       </div>
+
+  return (
+    <div>
+      <h3
+        style={{
+          color: " rgba(34, 34, 34, 1)",
+          fontFamily: "Playfair Display",
+          fontWeight: "700",
+          fontSize: "3rem",
+          textAlign: "center",
+          marginTop: "7rem",
+        }}
+      >
+        Our Favourite Menu
+      </h3>
+      <MenuWrapper>
+        {favMenuItem.map((val) => (
+          <FavoriteMenuItem
+            title={val.title}
+            decription={val.description}
+            price={val.price}
+            img={val.img}
+          />
+        ))}
+      </MenuWrapper>
+
     </div>
   );
 }
