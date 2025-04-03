@@ -1,12 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import LogoImage from "..//media/RestoQ.svg";
-import styled from "styled-components";
-import { ReservBtn } from "..///components/Button";
+import LogoImage from "../media/RestoQ.svg";
+import Styled from "styled-components";
+import { ReservBtn } from "../components/Button";
+import { styled } from "@mui/material/styles";
+import IconButton from "@mui/material/IconButton";
+import Badge, { badgeClasses } from "@mui/material/Badge";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useCart } from "../context/cartContext";
 
-type Props = {};
-
-const Logo = styled.img`
+const Logo = Styled.img`
   height: 1.2;
   cursor: pointer;
 
@@ -15,7 +18,7 @@ const Logo = styled.img`
   }
 `;
 
-const HeaderWrapper = styled.div`
+const HeaderWrapper = Styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -46,15 +49,27 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const WrapperNavLink = styled.nav`
+const WrapperNavLink = Styled.nav`
   margin-top: 0.5rem;
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 3rem;
   line-height: 1.2rem;
 `;
 
-const Header = (props: Props) => {
+const Header = () => {
+  const { count, cart } = useCart();
+
+  const CartBadge = styled(Badge)`
+    & .${badgeClasses.badge} {
+      top: -12px;
+      right: -6px;
+      font-size: 15px;
+      color: rgba(248, 189, 73, 1);
+    }
+  `;
+
   return (
     <HeaderWrapper>
       <Logo src={LogoImage} alt="Logo"></Logo>
@@ -99,6 +114,31 @@ const Header = (props: Props) => {
           }
         >
           Contact
+        </NavLink>
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            isActive ? "active-link" : "inactive-link"
+          }
+        >
+          {({ isActive }) => (
+            <IconButton>
+              <ShoppingCartIcon
+                fontSize="large"
+                sx={{ color: isActive ? "rgba(248, 189, 73, 1)" : "white" }}
+              />
+              <CartBadge
+                sx={{
+                  "& .MuiBadge-badge": {
+                    backgroundColor: "rgba(248, 189, 73, 1)",
+                    color: "white",
+                  },
+                }}
+                badgeContent={count}
+                overlap="circular"
+              />
+            </IconButton>
+          )}
         </NavLink>
       </WrapperNavLink>
       <div className="button">

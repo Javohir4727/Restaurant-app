@@ -53,8 +53,8 @@ const SubscribeSection = styled.div`
       background-color: rgba(248, 189, 73, 1);
       color: rgba(34, 34, 34, 1);
       font-weight: 600;
+      text-transform: capitalize;
       line-height: 21px;
-      padding: 15px 30px;
       border-radius: 8px;
       border: none;
       cursor: pointer;

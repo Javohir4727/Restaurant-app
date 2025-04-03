@@ -1,6 +1,7 @@
 import React from "react";
 import BackgroundImg from "./Image (9).jpg";
 import GTASectionStyle from "./GTASectionStyle";
+import Button from "@mui/material/Button";
 
 type Props = {};
 
@@ -19,7 +20,7 @@ function GTASection({}: Props) {
         <img src={BackgroundImg} alt="BackgroundImage" />
         <div>
           <input type="email" placeholder="Enter Your Email Here" />
-          <button>Subscribe</button>
+          <Button variant="contained">Subscribe</Button>
         </div>
       </GTASectionStyle>
     </div>

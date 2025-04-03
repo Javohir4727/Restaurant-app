@@ -53,7 +53,7 @@ const BlackBackground = ({ title }: Props) => {
               textAlign: "center",
               position: "relative",
               zIndex: "1",
-              maxWidth: "400px",
+              maxWidth: "500px",
               width: "100%",
               color: "white",
             }}

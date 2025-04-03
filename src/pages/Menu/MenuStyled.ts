@@ -21,6 +21,7 @@ const Typography = styled.h6`
 `;
 
 const MenuWrapper = styled.div`
+  margin-top: 80px;
   display: grid;
   grid-template-columns: auto auto auto;
   justify-content: center;

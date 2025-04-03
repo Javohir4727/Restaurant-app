@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import OurNewsletterItem from "./OurNewsletterItem";
 import { supabase } from "../utils/supabase";
+import { useNavigate } from "react-router-dom";
 
 interface newsLetterRestuarant {
   img: string;
@@ -55,6 +56,7 @@ const OurMenuWrapper = styled.div`
 `;
 
 function OurNewsletter() {
+  const navigate = useNavigate();
   const [getDataBase, setDataBase] = useState<newsLetterRestuarant[]>([]);
 
   const fetchData = async () => {
@@ -114,6 +116,7 @@ function OurNewsletter() {
             fontWeight: "500",
             cursor: "pointer",
           }}
+          onClick={() => navigate("/DetailBlog")}
         >
           See all
         </button>
