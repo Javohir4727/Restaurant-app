@@ -1,5 +1,6 @@
 import React from "react";
 import BlackBackground from "components/BlackBackground";
+
 import {
   MapWrapper,
   ContacInfoWrapper,
@@ -127,6 +128,13 @@ function Contact() {
       <GTASection />
       <Footer />
     </>
+type Props = {};
+
+function Contact({}: Props) {
+  return (
+    <div>
+      <BlackBackground title="Contact" />
+    </div>
   );
 }
 
