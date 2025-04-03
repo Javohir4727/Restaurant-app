@@ -142,7 +142,9 @@ const ProductDetail: React.FC = () => {
                 </Typography>
                 <Typography sx={{ fontWeight: "700", fontSize: "44px" }}>
                   <span style={{ color: "rgba(248, 189, 73, 1)" }}>$</span>
-                  {product?.price ? (product.price * count).toFixed(2) : "0.00"}
+                  {product?.price
+                    ? (product.price * Math.max(count, 1)).toFixed(2)
+                    : "0.00"}
                 </Typography>
               </div>
               <div>

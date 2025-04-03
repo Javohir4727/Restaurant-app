@@ -10,10 +10,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Img from "../../media/Image (10).jpg";
-import IMG from "../../media/Image (9).jpg";
-
-type Props = {};
+import { useCart } from "../../context/cartContext"; // Cart context ni import qilish
 
 const TAX_RATE = 0.01;
 
@@ -25,6 +22,7 @@ function priceRow(qty: number, subtotal: number) {
   return qty * subtotal;
 }
 
+// Row creation function to map data
 function createRow(
   img: string,
   product: string,
@@ -47,22 +45,25 @@ function subtotal(items: readonly Row[]) {
   return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
 }
 
-const rows = [
-  createRow(IMG, "Paperclips (Box)", 100, 1.15),
-  createRow(Img, "Paper (Case)", 10, 45.99),
-  createRow(Img, "Waste Basket", 2, 17.99),
-];
+function Cart() {
+  const { cart } = useCart(); // Cart konteksidan ma'lumot olish
 
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+  // Har bir mahsulotni yaratish
+  const rows = cart.map((item) =>
+    createRow(item.img, item.title, item.quantity, item.price)
+  );
 
-function Cart({}: Props) {
+  const invoiceSubtotal = subtotal(rows);
+  const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+  const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+
   return (
     <>
       <BlackBackground title="Cart" />
-      <Box sx={{ display: "flex", justifyContent: "center" }}>
-        <TableContainer component={Paper}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", margin: "40px 0px" }}
+      >
+        <TableContainer component={Paper} sx={{ width: "1100px" }}>
           <Table sx={{ minWidth: 700 }} aria-label="spanning table">
             <TableHead>
               <TableRow>
@@ -80,12 +81,12 @@ function Cart({}: Props) {
                     <img
                       src={row.img}
                       alt={row.product}
-                      width="50"
-                      height="50"
+                      width="70"
+                      height="70"
                     />
                   </TableCell>
                   <TableCell>{row.product}</TableCell>
-                  <TableCell align="right">{row.subtotal}</TableCell>
+                  <TableCell align="right">{ccyFormat(row.subtotal)}</TableCell>
                   <TableCell align="right">{row.qty}</TableCell>
                   <TableCell align="right">{ccyFormat(row.price)}</TableCell>
                 </TableRow>
