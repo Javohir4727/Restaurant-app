@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Background from "..//media/WeekendOffersB-g.jpg";
 import FoodImage from "..//media/Image (1).svg";
 import { ReservBtn } from "..///components/Button";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
@@ -62,6 +63,7 @@ const WrapperOffers = styled.div`
 `;
 
 function WeekendOffers({}: Props) {
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -78,7 +80,9 @@ function WeekendOffers({}: Props) {
             sint. Velit officia consequat duis enim velit mollit. Exercitation
             veniam consequat sunt n
           </p>
-          <ReservBtn className="btns">Reservation</ReservBtn>
+          <ReservBtn className="btns" onClick={() => navigate("/reservation")}>
+            Reservation
+          </ReservBtn>
           <ReservBtn className="btns">Get in Touch</ReservBtn>
         </div>
         <div className="offersImage">

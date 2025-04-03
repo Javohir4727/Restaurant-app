@@ -1,13 +1,14 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import MenuImg1 from "..//media//favouriteMenu/Image (4).jpg";
-import MenuImg2 from "..//media//favouriteMenu/Image (5).jpg";
-import MenuImg3 from "..//media//favouriteMenu/Image (6).jpg";
-import MenuImg4 from "..//media//favouriteMenu/Image (7).jpg";
-import MenuImg5 from "..//media//favouriteMenu/Image (8).jpg";
-import MenuImg6 from "..//media//favouriteMenu/Title & Desc.jpg";
 import FavoriteMenuItem from "./FavoriteMenuItem";
-import { title } from "process";
+import { supabase } from "../utils/supabase";
+
+interface favouriteMenuRestaurnat {
+  img: string;
+  title: string;
+  description: string;
+  price: number;
+}
 
 const MenuWrapper = styled.div`
   display: grid;
@@ -19,10 +20,13 @@ const MenuWrapper = styled.div`
   .menuContentWrapper {
     display: flex;
     align-items: center;
+
     gap: 1rem;
 
     img {
-      width: 120px;
+      border-radius: 16px;
+      width: 150px;
+      height: 150px;
     }
 
     div {
@@ -61,46 +65,52 @@ const MenuWrapper = styled.div`
   }
 `;
 
-const favMenuItem = [
-  {
-    title: "Our Favourite Menu 1",
-    description: "Amet minim mollit non deserunt ullamco",
-    img: `${MenuImg1}`,
-    price: 13,
-  },
-  {
-    title: "Our Favourite Menu 3",
-    description: "Amet minim mollit non deserunt ullamco",
-    img: `${MenuImg2}`,
-    price: 13,
-  },
-  {
-    title: "Our Favourite Menu 2",
-    description: "Amet minim mollit non deserunt ullamco",
-    img: `${MenuImg3}`,
-    price: 13,
-  },
-  {
-    title: "Our Favourite Menu 4",
-    description: "Amet minim mollit non deserunt ullamco",
-    img: `${MenuImg4}`,
-    price: 13,
-  },
-  {
-    title: "Our Favourite Menu 5",
-    description: "Amet minim mollit non deserunt ullamco",
-    img: `${MenuImg5}`,
-    price: 13,
-  },
-  {
-    title: "Our Favourite Menu 6",
-    description: "Amet minim mollit non deserunt ullamco",
-    img: `${MenuImg6}`,
-    price: 13,
-  },
-];
-
 function FavouriteMenu() {
+
+  const [getDataBase, setDataBase] = useState<favouriteMenuRestaurnat[]>([]);
+  const fetchData = async () => {
+    try {
+      let { data: FavouriteMenu, error } = await supabase
+        .from("FavouriteMenu")
+        .select("*");
+
+      setDataBase(FavouriteMenu || []);
+      if (error) {
+        throw error;
+      }
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+  return (
+    <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+      <div style={{ width: "1100px" }}>
+        <h3
+          style={{
+            color: " rgba(34, 34, 34, 1)",
+            fontFamily: "Playfair Display",
+            fontWeight: "700",
+            fontSize: "3rem",
+            textAlign: "center",
+            marginTop: "7rem",
+          }}
+        >
+          Our Favourite Menu
+        </h3>
+        <MenuWrapper>
+          {getDataBase.map((val) => (
+            <FavoriteMenuItem
+              title={val.title}
+              decription={val.description}
+              price={val.price}
+              img={val.img}
+            />
+          ))}
+        </MenuWrapper>
+      </div>
+
   return (
     <div>
       <h3
@@ -125,6 +135,7 @@ function FavouriteMenu() {
           />
         ))}
       </MenuWrapper>
+
     </div>
   );
 }

@@ -1,26 +1,37 @@
-import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import HomePage from "./pages/Home";
 import AboutPage from "./pages/About/About";
 import Menu from "./pages/Menu/Menu";
 import News from "./pages/News/News";
-import Pages from "./pages/Pages/Pages";
 import Contact from "./pages/Contact/Contact";
-
+import Reservation from "./pages/Reservation/Reservation";
+import DetailBlog from "./pages/DetailBlog/DetailBlog";
+import ProductDetail from "./pages/ProductDetail/ProductDetail";
+import Cart from "./pages/Cart/Cart";
+import { CartProvider } from "./context/cartContext";
+import Header from "components/Header";
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/pages" element={<Pages />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/news" element={<News />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <CartProvider>
+        <Header />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/reservation" element={<Reservation />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/detailBlog" element={<DetailBlog />} />
+          <Route path="/productdetail" element={<ProductDetail />} />
+          <Route path="/ProductDetail/:id" element={<ProductDetail />} />
+        </Routes>
+      </CartProvider>
     </>
   );
 }

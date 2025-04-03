@@ -1,8 +1,12 @@
 import styled from "styled-components";
 
+
+const Stack = styled.div`
+
 const MenuContainer = styled.div`
   max-width: 1160px;
   width: 100%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,13 +18,42 @@ const ChooseMenuWrapper = styled.div`
   margin-bottom: 40px;
 `;
 
+
+const Typography = styled.h6`
+
 const Title = styled.h4`
+
   font-size: 48px;
   font-weight: 700;
   font-family: Playfair Display;
   text-align: center;
   margin-bottom: 40px;
 `;
+
+
+const MenuWrapper = styled.div`
+  margin-top: 80px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  gap: 10px;
+`;
+const MenuImgWrapper = styled.div`
+  width: 300px;
+  margin: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  transition: 200ms;
+
+  &:hover {
+    box-shadow: 1px 0px 10px gray;
+    transform: scale(1.1, 1.1);
+    cursor: pointer;
+  }
+  img {
+    width: 100%;
+    height: 280px;
+    border-radius: 10px;
 
 const ButtonWrapper = styled.div`
   display: flex;
@@ -61,15 +94,29 @@ const MenuImgWrapper = styled.div`
     font-size: 24px;
     margin: 10px 0 0;
     display: flex;
+
+    width: 100%;
+    justify-content: space-between;
+
+    p {
+
     justify-content: space-between;
     P {
+
       color: rgba(248, 189, 73, 1);
       font-weight: 500;
       font-size: 18px;
       font-weight: 700;
       margin-top: 0;
+
+      line-height: 26px;
     }
     span {
+      color: black;
+
+    }
+    span {
+
       font-weight: 500;
     }
   }
@@ -80,6 +127,10 @@ const MenuImgWrapper = styled.div`
   }
 `;
 
+
+export { ChooseMenuWrapper, Typography, MenuImgWrapper, MenuWrapper };
+export default Stack;
+
 export {
   ChooseMenuWrapper,
   Title,
@@ -89,3 +140,4 @@ export {
   MenuWrapper,
 };
 export default MenuContainer;
+

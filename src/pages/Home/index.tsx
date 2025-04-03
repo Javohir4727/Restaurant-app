@@ -1,11 +1,10 @@
-import React from "react";
+import * as React from "react";
 import "./Index.css";
 import styled from "styled-components";
 import BackgroundImage from "..//..//media/background_reservation.jpg";
 import ReserveTableImage from "..//..//media/ReserveTable.jpg";
 import WhyChooseUs from "components/WhyChooseUs";
 import OurChef from "components/OurChef";
-import { ReservBtn } from "components/Button";
 import WeekendOffers from "..//..//components/WeekendOffers";
 import FavouriteMenu from "..//..//components/FavouriteMenu";
 import OurNewsletter from "components/OurNewsletter";
@@ -13,6 +12,8 @@ import OurCustomersSay from "components/Reviews";
 import GTASection from "..//..//components/GTASection/GTASection";
 import Footer from "..//..//components/Footer/Footer";
 import Header from "components/Header";
+import { useNavigate } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 type Props = {};
 
@@ -74,7 +75,7 @@ const ReserveTable = styled.div`
     color: black;
       
     }
-  }
+  
   .reserveImageWrapper {
     img {
       width: 400px;
@@ -97,7 +98,9 @@ const ReserveTable = styled.div`
     }
   
 `;
+
 const HomePage = (props: Props) => {
+  const navigate = useNavigate();
   return (
     <Container>
       <Header />
@@ -118,7 +121,24 @@ const HomePage = (props: Props) => {
             beatae quidem vel odio quae sit velit harum veniam. Maiores,
             voluptatum.
           </ReservContentDiscription>
-          <ReservBtn> Reservation </ReservBtn>
+          <Button
+            sx={{
+              fontWeight: "500",
+              padding: "10px 20px",
+              border: "1px solid white",
+              color: "white",
+              borderRadius: "8px",
+              transition: "200ms",
+              "&:hover": {
+                backgroundColor: "rgba(248, 189, 73, 1)",
+                borderColor: "rgba(248, 189, 73, 1)",
+                color: "black",
+              },
+            }}
+            onClick={() => navigate("/reservation")}
+          >
+            Reservation
+          </Button>
         </WrapperReservationContent>
       </ReservationSection>
       <ReserveTable>
@@ -131,9 +151,21 @@ const HomePage = (props: Props) => {
             Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
             sint. Velit officia consequat duis enim velit mollit.
           </p>
-          <ReservBtn className="reserveContentBtn discReserveBtn">
+          <Button
+            disableElevation
+            sx={{
+              fontWeight: "500",
+              padding: "8px 20px",
+              border: "1px solid white",
+              color: "black",
+              borderRadius: "8px",
+              transition: "200ms",
+              backgroundColor: "rgba(248, 189, 73, 1)",
+            }}
+            onClick={() => navigate("/reservation")}
+          >
             Reservation
-          </ReservBtn>
+          </Button>
         </div>
       </ReserveTable>
       <WhyChooseUs />
