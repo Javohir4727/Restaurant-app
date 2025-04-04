@@ -10,7 +10,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { useCart } from "../context/cartContext";
 
 const Logo = Styled.img`
-  height: 1.2;
+  height: 1.2rem;
   cursor: pointer;
 
   &:hover {
@@ -18,10 +18,7 @@ const Logo = Styled.img`
   }
 `;
 
-
 const HeaderWrapper = Styled.div`
-=======
-const HeaderWrapper = styled.div`
 
   position: absolute;
   top: 0;

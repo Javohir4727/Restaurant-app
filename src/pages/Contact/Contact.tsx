@@ -1,6 +1,4 @@
-import React from "react";
 import BlackBackground from "components/BlackBackground";
-
 import {
   MapWrapper,
   ContacInfoWrapper,
@@ -17,12 +15,12 @@ import TextField from "@mui/material/TextField";
 import InputLabel from "@mui/material/InputLabel";
 import FormControl from "@mui/material/FormControl";
 import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
 import GTASection from "components/GTASection/GTASection";
 import Footer from "components/Footer/Footer";
 
-function Contact() {
+const Contact = () => {
   return (
     <>
       <BlackBackground title="Contact" />
@@ -58,7 +56,6 @@ function Contact() {
             <div style={{ marginTop: "40px" }}>
               <TextField
                 required
-                id="outlined-required"
                 label="Enter Your First Name"
                 className="input"
               />
@@ -66,7 +63,6 @@ function Contact() {
             <div style={{ marginTop: "40px" }}>
               <TextField
                 required
-                id="outlined-required"
                 label="Enter Your Last Name"
                 className="input"
               />
@@ -74,7 +70,6 @@ function Contact() {
             <div>
               <TextField
                 required
-                id="outlined-required"
                 type="number"
                 label="Enter Your Phone"
                 className="input"
@@ -87,7 +82,6 @@ function Contact() {
                 </InputLabel>
                 <Select
                   labelId="demo-simple-select-label"
-                  id="demo-simple-select"
                   label="Select Person"
                   className="input"
                 >
@@ -103,7 +97,6 @@ function Contact() {
         <div>
           <TextField
             required
-            id="outlined-required"
             label="Message"
             className="text"
             multiline
@@ -128,14 +121,7 @@ function Contact() {
       <GTASection />
       <Footer />
     </>
-type Props = {};
-
-function Contact({}: Props) {
-  return (
-    <div>
-      <BlackBackground title="Contact" />
-    </div>
   );
-}
+};
 
 export default Contact;

@@ -1,143 +1,66 @@
 import styled from "styled-components";
 
-
 const Stack = styled.div`
-
-const MenuContainer = styled.div`
-  max-width: 1160px;
-  width: 100%;
-
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
+
 const ChooseMenuWrapper = styled.div`
-  max-width: 450px;
+  max-width: 1100px;
   width: 100%;
   margin-bottom: 40px;
 `;
 
-
-const Typography = styled.h6`
-
-const Title = styled.h4`
-
-  font-size: 48px;
-  font-weight: 700;
-  font-family: Playfair Display;
-  text-align: center;
-  margin-bottom: 40px;
-`;
-
-
 const MenuWrapper = styled.div`
-  margin-top: 80px;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  justify-content: center;
-  gap: 10px;
-`;
-const MenuImgWrapper = styled.div`
-  width: 300px;
-  margin: 10px;
-  padding: 20px;
-  border-radius: 10px;
-  transition: 200ms;
-
-  &:hover {
-    box-shadow: 1px 0px 10px gray;
-    transform: scale(1.1, 1.1);
-    cursor: pointer;
-  }
-  img {
-    width: 100%;
-    height: 280px;
-    border-radius: 10px;
-
-const ButtonWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-const Button = styled.button`
-  border: 1px solid black;
-  padding: 14px 34px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 26px;
-
-  &:hover {
-    background-color: rgba(248, 189, 73, 1);
-    border: 1px solid rgba(248, 189, 73, 1);
-  }
-`;
-const MenuWrapper = styled.div`
+  margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 `;
+
 const MenuImgWrapper = styled.div`
   width: 100%;
-  max-width: 300px;
-  margin: 10px 0;
+  max-width: 320px;
+  border-radius: 8px;
+  margin: 25px 0;
+  transition: 400ms;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 1px 1px 20px gray;
+    transform: scale(1.2, 1.2);
+  }
 
   img {
-    width: 380px;
+    width: 100%;
+    height: 280px;
+    border-radius: 10px;
   }
 
   h6 {
-    width: 380px;
-    font-family: Playfair Display;
+    font-family: "Playfair Display";
     font-weight: 700;
     font-size: 24px;
     margin: 10px 0 0;
     display: flex;
-
-    width: 100%;
     justify-content: space-between;
-
-    p {
-
-    justify-content: space-between;
-    P {
-
-      color: rgba(248, 189, 73, 1);
-      font-weight: 500;
-      font-size: 18px;
-      font-weight: 700;
-      margin-top: 0;
-
-      line-height: 26px;
-    }
-    span {
-      color: black;
-
-    }
-    span {
-
-      font-weight: 500;
-    }
   }
+
   p {
-    margin-top: 5px;
     font-size: 14px;
     color: rgba(133, 133, 133, 1);
+    margin-top: 5px;
+
+    &:first-child {
+      color: rgba(248, 189, 73, 1);
+    }
+  }
+
+  span {
+    font-weight: 500;
+    color: black;
   }
 `;
 
-
-export { ChooseMenuWrapper, Typography, MenuImgWrapper, MenuWrapper };
+export { ChooseMenuWrapper, MenuImgWrapper, MenuWrapper };
 export default Stack;
-
-export {
-  ChooseMenuWrapper,
-  Title,
-  Button,
-  ButtonWrapper,
-  MenuImgWrapper,
-  MenuWrapper,
-};
-export default MenuContainer;
-

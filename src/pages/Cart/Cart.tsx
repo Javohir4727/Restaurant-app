@@ -10,7 +10,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useCart } from "../../context/cartContext"; // Cart context ni import qilish
+import { useCart } from "../../context/cartContext";
 
 const TAX_RATE = 0.01;
 
@@ -22,7 +22,6 @@ function priceRow(qty: number, subtotal: number) {
   return qty * subtotal;
 }
 
-// Row creation function to map data
 function createRow(
   img: string,
   product: string,
@@ -46,9 +45,8 @@ function subtotal(items: readonly Row[]) {
 }
 
 function Cart() {
-  const { cart } = useCart(); // Cart konteksidan ma'lumot olish
+  const { cart } = useCart();
 
-  // Har bir mahsulotni yaratish
   const rows = cart.map((item) =>
     createRow(item.img, item.title, item.quantity, item.price)
   );
