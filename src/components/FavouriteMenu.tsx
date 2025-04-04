@@ -3,7 +3,7 @@ import styled from "styled-components";
 import FavoriteMenuItem from "./FavoriteMenuItem";
 import { supabase } from "../utils/supabase";
 
-interface favouriteMenuRestaurnat {
+interface FavouriteMenuRestaurant {
   img: string;
   title: string;
   description: string;
@@ -20,7 +20,6 @@ const MenuWrapper = styled.div`
   .menuContentWrapper {
     display: flex;
     align-items: center;
-
     gap: 1rem;
 
     img {
@@ -42,6 +41,7 @@ const MenuWrapper = styled.div`
           font-size: 14px;
           font-weight: 400;
         }
+
         span {
           color: rgba(0, 0, 0, 0.2);
         }
@@ -52,6 +52,7 @@ const MenuWrapper = styled.div`
           font-size: 12px;
         }
       }
+
       .spanYellow {
         color: rgba(248, 189, 73, 1);
         font-size: 18px;
@@ -66,24 +67,28 @@ const MenuWrapper = styled.div`
 `;
 
 function FavouriteMenu() {
+  const [getDataBase, setDataBase] = useState<FavouriteMenuRestaurant[]>([]);
 
-  const [getDataBase, setDataBase] = useState<favouriteMenuRestaurnat[]>([]);
   const fetchData = async () => {
     try {
       let { data: FavouriteMenu, error } = await supabase
         .from("FavouriteMenu")
         .select("*");
 
-      setDataBase(FavouriteMenu || []);
       if (error) {
         throw error;
       }
-    } catch (error) {}
+
+      setDataBase(FavouriteMenu || []);
+    } catch (error) {
+      console.error("Supabase fetch error:", error);
+    }
   };
 
   useEffect(() => {
     fetchData();
   }, []);
+
   return (
     <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
       <div style={{ width: "1100px" }}>
@@ -100,8 +105,9 @@ function FavouriteMenu() {
           Our Favourite Menu
         </h3>
         <MenuWrapper>
-          {getDataBase.map((val) => (
+          {getDataBase.map((val, index) => (
             <FavoriteMenuItem
+              key={index}
               title={val.title}
               decription={val.description}
               price={val.price}
@@ -110,32 +116,6 @@ function FavouriteMenu() {
           ))}
         </MenuWrapper>
       </div>
-
-  return (
-    <div>
-      <h3
-        style={{
-          color: " rgba(34, 34, 34, 1)",
-          fontFamily: "Playfair Display",
-          fontWeight: "700",
-          fontSize: "3rem",
-          textAlign: "center",
-          marginTop: "7rem",
-        }}
-      >
-        Our Favourite Menu
-      </h3>
-      <MenuWrapper>
-        {favMenuItem.map((val) => (
-          <FavoriteMenuItem
-            title={val.title}
-            decription={val.description}
-            price={val.price}
-            img={val.img}
-          />
-        ))}
-      </MenuWrapper>
-
     </div>
   );
 }
