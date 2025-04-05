@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "@mui/material/Button";
 import BlackBackground from "components/BlackBackground";
 import GTASection from "components/GTASection/GTASection";
 import Footer from "components/Footer/Footer";
@@ -11,6 +12,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useCart } from "../../context/cartContext";
+import ClearIcon from "@mui/icons-material/Clear";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 
 const TAX_RATE = 0.01;
 
@@ -70,6 +74,7 @@ function Cart() {
                 <TableCell align="right">Price</TableCell>
                 <TableCell align="right">Qty</TableCell>
                 <TableCell align="right">Subtotal</TableCell>
+                <TableCell align="center">Actions</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -85,8 +90,45 @@ function Cart() {
                   </TableCell>
                   <TableCell>{row.product}</TableCell>
                   <TableCell align="right">{ccyFormat(row.subtotal)}</TableCell>
-                  <TableCell align="right">{row.qty}</TableCell>
+                  <TableCell align="right"> {row.qty} </TableCell>
                   <TableCell align="right">{ccyFormat(row.price)}</TableCell>
+                  <TableCell align="center">
+                    <Button
+                      variant="contained"
+                      sx={{
+                        padding: "4px",
+                        minWidth: "35px",
+                        backgroundColor: "rgba(248, 189, 73, 1)",
+                        color: "black",
+                      }}
+                    >
+                      <AddIcon />
+                    </Button>
+
+                    <Button
+                      variant="contained"
+                      sx={{
+                        padding: "4px",
+                        minWidth: "35px",
+                        backgroundColor: "rgba(248, 189, 73, 1)",
+                        color: "black",
+                        margin: "10px",
+                      }}
+                    >
+                      <RemoveIcon />
+                    </Button>
+                    <Button
+                      variant="contained"
+                      sx={{
+                        padding: "4px",
+                        minWidth: "35px",
+                        backgroundColor: "rgba(248, 189, 73, 1)",
+                        color: "black",
+                      }}
+                    >
+                      <ClearIcon />
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
               <TableRow>
