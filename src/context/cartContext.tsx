@@ -13,6 +13,9 @@ interface CartContextType {
   setCart: React.Dispatch<React.SetStateAction<CartItem[]>>;
   count: number;
   addToCart: (item: CartItem) => void;
+  incrementItem: (id: string) => void; // ✅ YANGI
+  decrementItem: (id: string) => void; // ✅ YANGI
+  removeItem: (id: string) => void; // ✅ YANGI
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -51,8 +54,41 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     });
   };
 
+  const incrementItem = (id: string) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  const decrementItem = (id: string) => {
+    setCart(
+      (prevCart) =>
+        prevCart
+          .map((item) =>
+            item.id === id ? { ...item, quantity: item.quantity - 1 } : item
+          )
+          .filter((item) => item.quantity > 0) // Remove items with quantity 0
+    );
+  };
+
+  const removeItem = (id: string) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
+  };
+
   return (
-    <CartContext.Provider value={{ cart, setCart, count, addToCart }}>
+    <CartContext.Provider
+      value={{
+        cart,
+        setCart,
+        count,
+        addToCart,
+        incrementItem,
+        decrementItem,
+        removeItem,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
@@ -65,5 +101,3 @@ export const useCart = () => {
   }
   return context;
 };
-
-export default CartItem;
