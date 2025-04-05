@@ -11,7 +11,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useCart } from "../../context/cartContext";
+import { useCart } from "../../context/cartContext"; // useCart import qilish
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -27,16 +27,18 @@ function priceRow(qty: number, subtotal: number) {
 }
 
 function createRow(
+  id: string,
   img: string,
   product: string,
   qty: number,
   subtotal: number
 ) {
   const price = priceRow(qty, subtotal);
-  return { img, product, qty, subtotal, price };
+  return { id, img, product, qty, subtotal, price };
 }
 
 interface Row {
+  id: string;
   img: string;
   product: string;
   qty: number;
@@ -49,10 +51,10 @@ function subtotal(items: readonly Row[]) {
 }
 
 function Cart() {
-  const { cart } = useCart();
+  const { cart, incrementItem, decrementItem, removeItem } = useCart(); // Yangi funksiyalarni chaqiramiz
 
   const rows = cart.map((item) =>
-    createRow(item.img, item.title, item.quantity, item.price)
+    createRow(item.id, item.img, item.title, item.quantity, item.price)
   );
 
   const invoiceSubtotal = subtotal(rows);
@@ -95,6 +97,7 @@ function Cart() {
                   <TableCell align="center">
                     <Button
                       variant="contained"
+                      onClick={() => incrementItem(row.id)} // Increment
                       sx={{
                         padding: "4px",
                         minWidth: "35px",
@@ -107,6 +110,7 @@ function Cart() {
 
                     <Button
                       variant="contained"
+                      onClick={() => decrementItem(row.id)} // Decrement
                       sx={{
                         padding: "4px",
                         minWidth: "35px",
@@ -117,8 +121,10 @@ function Cart() {
                     >
                       <RemoveIcon />
                     </Button>
+
                     <Button
                       variant="contained"
+                      onClick={() => removeItem(row.id)} // Remove
                       sx={{
                         padding: "4px",
                         minWidth: "35px",
